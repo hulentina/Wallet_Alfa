@@ -1,4 +1,15 @@
+import 'react-native-gesture-handler';
 import React, { Component } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Feed from './src/tabs/Feed'
+import Profile from './src/tabs/Profile'
+//import Notifications from './src/tabs/Notifications'
+import NewPost from './src/tabs/NewPost'
+import PostDetails from './src/stack/PostDetails.js'
+
 import {
   Platform,
   StyleSheet,
@@ -7,33 +18,26 @@ import {
 } from 'react-native';
 import { CardList } from 'react-native-card-list';
 
-const cards = [
-  {
-    id: "0",
-    title: "Starry Night",
-    picture: require('./assets/starry.jpg'),
-    content: <Text>Starry Night</Text>
-  },
-  {
-    id: "1",
-    title: "Wheat Field",
-    picture: require('./assets/wheat.jpg'),
-    content: <Text>Wheat Field with Cypresses</Text>
-  },
-  {
-    id: "2",
-    title: "Bedroom in Arles",
-    picture: require('./assets/bed.jpg'),
-    content: <Text>Bedroom in Arles</Text>
-  }
-]
+
+const Tabs = createBottomTabNavigator()
+const Stack = createStackNavigator()
 
 export default class App extends Component<{}> {
+  FeedStack = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Main" component={Feed} />
+            <Stack.Screen name="My Cards" component={PostDetails} />
+        </Stack.Navigator>
+    )
+}
   render() {
     return (
-      <View style={styles.container}>
-        <CardList cards={cards} />
-      </View>
+      <NavigationContainer>
+            <Tabs.Navigator>
+                <Tabs.Screen name='Cards' children={this.FeedStack} />
+            </Tabs.Navigator>
+      </NavigationContainer>
     );
   }
 }
