@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {
     Platform,
     SafeAreaView, 
+    Image,
     View, 
     Text,
     StyleSheet
@@ -16,19 +17,43 @@ const cards = [
       id: "0",
       title: "Starry Night",
       picture: require('../../assets/starry.jpg'),
-      content: <Text>Starry Night</Text>
+      // Тут не получилось сделать баркод(  поэтому простоместо для изображения)
+      content: <Image          
+       style={{
+        resizeMode : 'contain',
+        height: 150,
+        width: 300,
+      }}
+      source={require('../../assets/starry.jpg')}
+      />
     },
     {
       id: "1",
       title: "Wheat Field",
       picture: require('../../assets/wheat.jpg'),
-      content: <Text>Wheat Field with Cypresses</Text>
+      // Тут не получилось сделать баркод(  поэтому простоместо для изображения)
+      content: <Image          
+       style={{
+        resizeMode : 'contain',
+        height: 150,
+        width: 300,
+      }}
+      source={require('../../assets/starry.jpg')}
+      />
     },
     {
       id: "2",
       title: "Bedroom in Arles",
       picture: require('../../assets/bed.jpg'),
-      content: <Text>Bedroom in Arles</Text>
+      // Тут не получилось сделать баркод(  поэтому простоместо для изображения)
+      content: <Image          
+       style={{
+        resizeMode : 'contain',
+        height: 150,
+        width: 300,
+      }}
+      source={require('../../assets/starry.jpg')}
+      />
     }
   ]
 

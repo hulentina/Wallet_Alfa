@@ -9,18 +9,25 @@ import {
     Button,
     StyleSheet,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    ImageBackground,
+    Dimensions
  } from 'react-native';
 
 export default function Feed(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const staticImage = require("../../assets/fon1.png");
     return (
         <SafeAreaView style = {styles.container}>
+        <ImageBackground source={staticImage} style={styles.ImageBackground}>
+            <StatusBar style="auto" />
+        </ImageBackground>
+        <Text style = {styles.Text}>AUTHORIZE</Text>
         <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Email."
+          placeholder="Email"
           placeholderTextColor="#003f5c"
           onChangeText={(email) => setEmail(email)}
         />
@@ -28,7 +35,7 @@ export default function Feed(props) {
         <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
+          placeholder="Password"
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
@@ -46,16 +53,16 @@ export default function Feed(props) {
         </SafeAreaView>
     )
 }
-
+var width = Dimensions.get('window').width; 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F5FCFF',
+      backgroundColor: 'white',
     },
     inputView: {
-        backgroundColor: "#88C2E4",
+        backgroundColor: "#e4e7ec",
         borderRadius: 30,
         width: "70%",
         height: 45,
@@ -75,6 +82,25 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         marginTop: 40,
-        backgroundColor: "#397FC7",
+        backgroundColor: "#e3041b",
+        marginBottom: 20
       },
+      loginText: {
+        color: '#fff',
+        fontWeight: 'bold'
+      },
+      ImageBackground: {
+        flex: 1,
+        resizeMode: "contain",
+        aspectRatio: 1.5,  
+        height: '80%',
+        alignItems: "center",
+        marginBottom: 0
+      },
+      Text: {
+        color: '#303e49',
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 40
+      }
   });

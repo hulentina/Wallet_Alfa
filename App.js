@@ -14,7 +14,9 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  SafeAreaView,
+  
 } from 'react-native';
 import { CardList } from 'react-native-card-list';
 
@@ -25,8 +27,18 @@ const Stack = createStackNavigator()
 export default class App extends Component<{}> {
   FeedStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Main" component={Feed} />
+        <Stack.Navigator
+        screenOptions={{
+          headerTintColor: '#e3041b',
+          headerTitleAllowFontScaling: 'bold',
+          backgroundColor: 'yellow',
+          //style: { backgroundColor: 'orange'}
+          headerStyle: {
+            backgroundColor: '#e4e7ec',
+          },
+          
+        }}>
+            <Stack.Screen name="MAIN" component={Feed} />
             <Stack.Screen name="My Cards" component={PostDetails} />
         </Stack.Navigator>
     )
@@ -34,8 +46,17 @@ export default class App extends Component<{}> {
   render() {
     return (
       <NavigationContainer>
-            <Tabs.Navigator>
-                <Tabs.Screen name='Cards' children={this.FeedStack} />
+            <Tabs.Navigator
+            screenOptions={{
+              tabBarActiveTintColor: 'black',
+              backgroundColor: 'yellow',
+              //style: { backgroundColor: 'orange'}
+              tabBarStyle: {
+                backgroundColor: '#e4e7ec',
+              },
+              
+            }}>
+                <Tabs.Screen name='Alpha-Wallet' children={this.FeedStack}/>
             </Tabs.Navigator>
       </NavigationContainer>
     );
@@ -49,4 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  tabs: {
+    backgroundColor: '#e4e7ec',
+  }
 });
